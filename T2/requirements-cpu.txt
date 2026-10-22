@@ -1,0 +1,7 @@
+--index-url
+https://download.pytorch.org/whl/cpu
+
+matplotlib
+torch
+torchvision
+scipy
