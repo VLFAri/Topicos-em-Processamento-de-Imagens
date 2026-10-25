@@ -1,4 +1,13 @@
-#Script para treino e validação do aprendizagem da rede neural (usada para todas as arquiteturas e estratégias de melhoria)
+"""
+A arquitetura adotada baseia-se na ResNet e é composta por 3
+ camadas convolucionais seguidas por quatro camadas fully-connected
+ (MLP). A função de ativação ReLU é utilizada para introduzir 
+ não linearidade ao modelo. Além disso, são empregadas as técni-
+cas de Batch Normalization e Dropout, com taxa de 40%, para redu-
+zir o sobreajuste (overfitting) e favorecer a capacidade de gene-
+ralização da rede neural. A arquitetura ResNet também utiliza 
+conexões residuais, que facilitam o treinamento de redes profundas.
+"""
 
 import torch
 import torch.nn as nn

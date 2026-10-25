@@ -1,4 +1,13 @@
-#Script para treino e validação do aprendizagem da rede neural (usada para todas as arquiteturas e estratégias de melhoria)
+"""
+A arquitetura adotada é composta por 3 camadas convolucionais, 
+seguidas por 4 camadas fully connected (MLP). A função de ativação 
+ReLU (*Rectified Linear Unit*) é utilizada para introduzir não 
+linearidade ao modelo. Adicionalmente, foram lincorporadas as 
+técnicas de Dropout, com uma taxa de 40%, e Batch Normalization,
+ com o objetivo de reduzir o sobreajuste (*overfitting*) e favo-
+recer a estabilidade do treinamento, contribuindo para a 
+capacidade de generalização da rede neural.
+"""
  
 import torch
 import torch.nn as nn

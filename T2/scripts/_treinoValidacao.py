@@ -1,17 +1,18 @@
-# Script para fazer treinamento, validação e teste
+""" Script para fazer treinamento, validação e teste
+
+AVISO: COMO ESSE SCRIPT UTILIZA-SE DO SCRIPT datasets, ESSE SCRIPT SÓ EXECUTARÁ CORRETAMENTE SE O SCRIPT baixar_dados.py JÁ ESTIVER SIDO EXECUTADO E OS ARQUIVOS .mat BAIXADOS """
 
 import torch
 import torch.nn as nn
 import torch.optim as optim
 import matplotlib.pyplot as plt
-from download import marcador
 from datasets import gerar_datasets
 from arquiteturas.MLP_CNN import MLP_CNN_Modelo
 from arquiteturas.MLP_CNN_com_BatchNorm_Dropout import MLP_CNN_com_BatchNorm_Dropout_Modelo
 from arquiteturas.ResNet import ResNet_Modelo
 
 def treino_validacao():
-    if "download concluído!" in marcador:
+    try:
 
         lotes = int(input("Número de batches: "))
 
@@ -31,7 +32,7 @@ def treino_validacao():
     
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         print(f'Rodando em {device}')
-        modelos_disponiveis = [MLP_CNN_Modelo, MLP_CNN_com_BatchNorm_Dropout_Modelo, ResNet_Modelo]
+        modelos_disponiveis = [MLP_CNN_Modelo, MLP_CNN_com_BatchNorm_Dropout_Modelo,ResNet_Modelo]
         epocas = int(input("Quantidade de épocas que deseja treinar: "))
         
         for mod in modelos_disponiveis:
@@ -152,8 +153,10 @@ def treino_validacao():
 
         plt.show()  
 
-    else:
+    except (FileNotFoundError, OSError):
         print("Download não concluído ou não realizado!")
+    except KeyboardInterrupt:
+        print("Execução interrompida  pelo usuário.")
 
 if __name__ == "__main__":
     treino_validacao()
